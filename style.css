@@ -962,7 +962,7 @@ footer p {
     }
 
     .hero {
-        padding: 80px 0;
+        padding: 0;
         min-height: 50vh;
     }
 
@@ -971,22 +971,21 @@ footer p {
     }
 
     .hero-content-positioned {
-        padding: 0 1.5rem 1.75rem;
+        padding: 0 1.5rem 2.5rem;
     }
 
     .hero::after {
-        background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0) 65%);
+        background: linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0) 65%);
     }
 
     .hero h1 {
         font-size: 2.5rem;
-        font-weight: 700;
-        text-shadow: 0 2px 20px rgba(0,0,0,0.75), 0 0 40px rgba(0,0,0,0.5);
+        text-shadow: 0 2px 20px rgba(0,0,0,0.65), 0 0 35px rgba(0,0,0,0.4);
     }
 
     .hero p {
         font-size: 1rem;
-        text-shadow: 0 1px 12px rgba(0,0,0,0.85);
+        text-shadow: 0 1px 12px rgba(0,0,0,0.75);
     }
 
     h2 {
