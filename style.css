@@ -708,7 +708,7 @@ section:last-of-type {
 /* Updates Section */
 .projects-section {
     background-color: #F1ECE1;
-    padding: 4rem 0;
+    padding: 60px 0;
     border-top: 1px solid #000;
 }
 
@@ -1683,7 +1683,7 @@ a.county-link:visited .towns {
 
 /* Blog Article Styles */
 .blog-article-section {
-    padding: 80px 0;
+    padding: 60px 0;
     border-top: 1px solid #000;
 }
 
