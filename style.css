@@ -970,12 +970,23 @@ footer p {
         object-position: 55% 35%;
     }
 
+    .hero-content-positioned {
+        padding: 0 1.5rem 1.75rem;
+    }
+
+    .hero::after {
+        background: linear-gradient(to top, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 35%, rgba(0,0,0,0) 65%);
+    }
+
     .hero h1 {
         font-size: 2.5rem;
+        font-weight: 700;
+        text-shadow: 0 2px 20px rgba(0,0,0,0.75), 0 0 40px rgba(0,0,0,0.5);
     }
 
     .hero p {
         font-size: 1rem;
+        text-shadow: 0 1px 12px rgba(0,0,0,0.85);
     }
 
     h2 {
