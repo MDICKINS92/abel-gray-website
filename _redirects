@@ -1,6 +1,16 @@
 /locations.html /sell-your-land 301
 /locations /sell-your-land 301
 /sell-your-land /locations.html 200
+/sell-your-land-buckinghamshire /sell-land-buckinghamshire.html 200
+/sell-your-land-bedfordshire /sell-land-bedfordshire.html 200
+/sell-your-land-northamptonshire /sell-land-northamptonshire.html 200
+/sell-your-land-thrapston /sell-land-thrapston.html 200
+/sell-your-land-towcester /sell-land-towcester.html 200
+/sell-land-buckinghamshire /sell-your-land-buckinghamshire 301
+/sell-land-bedfordshire /sell-your-land-bedfordshire 301
+/sell-land-northamptonshire /sell-your-land-northamptonshire 301
+/sell-land-thrapston /sell-your-land-thrapston 301
+/sell-land-towcester /sell-your-land-towcester 301
 /sell-land-gloucestershire /sell-your-land 301
 /sell-land-gloucestershire.html /sell-your-land 301
 /sell-land-leicestershire /sell-your-land 301
