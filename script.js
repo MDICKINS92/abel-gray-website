@@ -117,9 +117,5 @@ document.querySelectorAll('a[href*="#contact"]').forEach(link => {
 
 // Provide the same company and privacy details in every existing footer.
 document.querySelectorAll('footer .container').forEach(footer => {
-    if (footer.querySelector('.footer-legal')) return;
-    const legal = document.createElement('div');
-    legal.className = 'footer-legal';
-    legal.innerHTML = 'Abel Gray Homes Limited · Registered in England and Wales · Company No. 14625321 · Operating from Northamptonshire · <a href="/privacy-policy">Privacy Policy</a>';
-    footer.appendChild(legal);
+    footer.innerHTML = '<p>&copy; <span id="copyright-year">' + new Date().getFullYear() + '</span> Abel Gray Homes Limited</p><div class="footer-legal">Operating from Northamptonshire · Registered in England and Wales · Company No. 14625321 · <a href="/privacy-policy">Privacy Policy</a></div>';
 });
