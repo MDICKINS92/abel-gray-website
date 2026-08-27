@@ -1156,6 +1156,37 @@ footer p {
     letter-spacing: 0.5px;
 }
 
+.tews-cover {
+    padding: 2.5rem 0 0;
+    background-color: #F1ECE1;
+}
+
+.tews-cover-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.tews-cover-figure {
+    margin: 0;
+    overflow: hidden;
+}
+
+.tews-cover-figure img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1.9 / 1;
+    object-fit: cover;
+}
+
+.tews-cover-note {
+    margin: 0.75rem 0 0;
+    font-size: 0.75rem;
+    font-weight: 300;
+    letter-spacing: 0.25px;
+    color: #666;
+}
+
 @media (max-width: 768px) {
     .page-header {
         padding: 40px 0;
@@ -1168,6 +1199,15 @@ footer p {
     
     .page-header p {
         font-size: 0.95rem;
+    }
+
+    .tews-cover {
+        padding-top: 1.75rem;
+    }
+
+    .tews-cover-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
     }
 }
 
