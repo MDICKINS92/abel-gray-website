@@ -1167,6 +1167,10 @@ footer p {
     gap: 1.5rem;
 }
 
+.tews-cover-grid.single {
+    grid-template-columns: minmax(0, 1fr);
+}
+
 .tews-cover-figure {
     margin: 0;
     overflow: hidden;
@@ -1176,6 +1180,11 @@ footer p {
     display: block;
     width: 100%;
     aspect-ratio: 1.9 / 1;
+    object-fit: cover;
+}
+
+.tews-cover-grid.single .tews-cover-figure img {
+    aspect-ratio: 1058 / 598;
     object-fit: cover;
 }
 
