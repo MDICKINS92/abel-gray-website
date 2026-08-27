@@ -197,7 +197,11 @@ h4 {
 }
 
 .hero-content-positioned {
-    padding: 60px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding: 0 60px 60px;
     max-width: 650px;
 }
 
@@ -1025,6 +1029,11 @@ footer p {
     line-height: 1.45;
 }
 
+.cookie-notice[hidden],
+.cookie-notice.is-hidden {
+    display: none !important;
+}
+
 .cookie-notice p {
     margin: 0;
 }
@@ -1569,23 +1578,29 @@ a.county-link:visited .towns {
 
 /* Shared local coverage block */
 .site-coverage {
-    padding: 2.5rem 0;
+    padding: 1.75rem 0 1.5rem;
     border-top: 1px solid #ccc;
     background-color: #F1ECE1;
 }
 
 .site-coverage h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0.65rem;
+    font-family: 'Lato', sans-serif;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 1.6px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: #666;
 }
 
 .site-coverage p {
     max-width: 1000px;
-    margin-bottom: 0.75rem;
-    font-size: 0.78rem;
+    margin-bottom: 0.35rem;
+    font-size: 0.72rem;
     font-weight: 300;
-    line-height: 1.8;
-    color: #555;
+    line-height: 1.7;
+    color: #777;
 }
 
 .site-coverage p:last-child {
@@ -1593,7 +1608,7 @@ a.county-link:visited .towns {
 }
 
 .site-coverage strong {
-    color: #333;
+    color: #555;
     font-weight: 700;
 }
 
@@ -1632,6 +1647,20 @@ a.county-link:visited .towns {
         width: 100%;
         padding: 10px 24px;
         font-size: 0.8rem;
+    }
+
+    .site-coverage {
+        padding: 1.5rem 0 1.25rem;
+    }
+
+    .site-coverage h2 {
+        font-size: 0.7rem;
+        letter-spacing: 1.4px;
+    }
+
+    .site-coverage p {
+        font-size: 0.7rem;
+        line-height: 1.7;
     }
 }
 

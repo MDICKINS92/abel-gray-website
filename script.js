@@ -137,17 +137,52 @@ document.querySelectorAll('footer .container').forEach(footer => {
     footer.innerHTML = '<p>&copy; <span id="copyright-year">' + new Date().getFullYear() + '</span> Abel Gray</p><p>Property investment, land and residential development across London, the Midlands and South East.</p><div class="footer-legal">Abel Gray is a trading name of <a href="https://find-and-update.company-information.service.gov.uk/company/14625321" target="_blank" rel="noopener">Abel Gray Homes Limited</a>, registered in England and Wales, company number 14625321. Registered office: 1st Floor, 14 Fulwood Place, London WC1V 6HZ. <a href="/privacy-policy">Privacy Policy</a></div>';
 });
 
-const cookieNotice = document.getElementById('cookie-notice');
-const cookieNoticeDismiss = document.getElementById('cookie-notice-dismiss');
-if (cookieNotice && !localStorage.getItem('abel-gray-cookie-notice-dismissed')) {
-    cookieNotice.hidden = false;
-}
-if (cookieNoticeDismiss) {
-    cookieNoticeDismiss.addEventListener('click', function () {
-        localStorage.setItem('abel-gray-cookie-notice-dismissed', 'true');
+(function () {
+    const cookieNotice = document.getElementById('cookie-notice');
+    const cookieNoticeDismiss = document.getElementById('cookie-notice-dismiss');
+    const cookieKey = 'abel-gray-cookie-notice-dismissed';
+
+    if (!cookieNotice) return;
+
+    function hasDismissedNotice() {
+        try {
+            if (window.localStorage.getItem(cookieKey) === 'true') return true;
+        } catch (error) {
+            // Use the first-party cookie fallback below when storage is restricted.
+        }
+        return document.cookie.split('; ').some(cookie => cookie === `${cookieKey}=true`);
+    }
+
+    function rememberDismissal() {
+        try {
+            window.localStorage.setItem(cookieKey, 'true');
+        } catch (error) {
+            // The cookie fallback still persists the choice when localStorage is blocked.
+        }
+        document.cookie = `${cookieKey}=true; max-age=31536000; path=/; SameSite=Lax`;
+    }
+
+    function hideNotice() {
         cookieNotice.hidden = true;
-    });
-}
+        cookieNotice.setAttribute('aria-hidden', 'true');
+        cookieNotice.classList.add('is-hidden');
+    }
+
+    if (hasDismissedNotice()) {
+        hideNotice();
+    } else {
+        cookieNotice.hidden = false;
+        cookieNotice.removeAttribute('aria-hidden');
+        cookieNotice.classList.remove('is-hidden');
+    }
+
+    if (cookieNoticeDismiss) {
+        cookieNoticeDismiss.addEventListener('click', function () {
+            rememberDismissal();
+            hideNotice();
+        });
+    }
+})();
 
 // Upgrade lazy-loaded legacy gallery images to responsive AVIF/WebP sources.
 (function () {
