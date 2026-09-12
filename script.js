@@ -4,6 +4,18 @@ if (copyrightYear) {
     copyrightYear.textContent = new Date().getFullYear();
 }
 
+// Replit injects Umami on published pages when analytics is enabled.
+// Keep analytics optional and isolated so tracking can never break the site.
+function trackAnalyticsEvent(name, data) {
+    try {
+        window.umami?.track(name, data);
+    } catch (error) {
+        // Analytics must never interrupt a visitor action.
+    }
+}
+
+const analyticsPage = window.location.pathname || '/';
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -66,6 +78,12 @@ if (contactForm) {
             return false;
         }
 
+        const sourceField = this.querySelector('input[name="enquiry_source"]');
+        trackAnalyticsEvent('enquiry_form_submitted', {
+            source: sourceField ? sourceField.value : 'website',
+            page: analyticsPage
+        });
+
         const button = this.querySelector('button[type="submit"]');
         button.textContent = 'Sending...';
         button.disabled = true;
@@ -113,6 +131,60 @@ document.querySelectorAll('a[href*="#contact"]').forEach(link => {
     if (!href || href.includes('source=')) return;
     const separator = href.includes('?') ? '&' : '?';
     link.setAttribute('href', `${href.split('#')[0]}${separator}source=${encodeURIComponent(enquirySource)}#contact`);
+});
+
+function analyticsLinkLocation(link) {
+    if (link.closest('nav')) return 'navigation';
+    if (link.closest('[data-project-card]')) return 'project_card';
+    if (link.closest('footer')) return 'footer';
+    return 'content';
+}
+
+document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    const href = link.getAttribute('href') || '';
+    const lowerHref = href.toLowerCase();
+    const location = analyticsLinkLocation(link);
+
+    if (lowerHref.startsWith('mailto:info@abelgray.co.uk')) {
+        trackAnalyticsEvent('contact_method_clicked', {
+            method: 'email',
+            location: location,
+            page: analyticsPage
+        });
+    } else if (lowerHref.startsWith('tel:')) {
+        trackAnalyticsEvent('contact_method_clicked', {
+            method: 'phone',
+            location: location,
+            page: analyticsPage
+        });
+    }
+
+    if (href.includes('#contact')) {
+        let source = enquirySource;
+        try {
+            source = new URL(link.href, window.location.href).searchParams.get('source') || source;
+        } catch (error) {
+            // Use the page-derived source when a link cannot be parsed.
+        }
+        trackAnalyticsEvent('enquiry_cta_clicked', {
+            source: source,
+            location: location,
+            page: analyticsPage
+        });
+    }
+
+    const projectCard = link.closest('[data-project-card]');
+    const projectMatch = lowerHref.match(/^\/(pepys-lane|field-view-house|lindoe-meadows|ecl-mews)(?:[/?#]|$)/);
+    if (projectMatch) {
+        trackAnalyticsEvent('project_link_clicked', {
+            project: projectCard ? projectCard.getAttribute('data-project-card') : projectMatch[1],
+            location: location,
+            page: analyticsPage
+        });
+    }
 });
 
 // Keep the full local coverage visible at the bottom of every page.
