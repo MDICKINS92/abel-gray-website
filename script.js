@@ -118,6 +118,7 @@ const enquirySource = (() => {
     if (path.includes('field-view')) return 'field-view-house';
     if (path.includes('lindoe-meadows')) return 'lindoe-meadows';
     if (path.includes('ecl-mews')) return 'ecl-mews';
+    if (path.includes('sell-your-barn')) return 'land-barn';
     if (path.includes('sell-land') || path.includes('sell-your-land') || path.includes('locations')) return 'land';
     if (path.includes('commercial')) return 'commercial';
     return 'website';
