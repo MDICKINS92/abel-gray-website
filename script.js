@@ -293,6 +293,7 @@ document.addEventListener('click', function (event) {
 // Keep a compact, consistent coverage summary in every existing footer.
 document.querySelectorAll('footer .container').forEach(footer => {
     footer.innerHTML = '<h2>Areas We Cover</h2>' +
+        '<p class="footer-links"><a href="/blog">Blog</a><a href="/asset-management">Asset Management</a></p>' +
         '<p>We buy land and residential development opportunities across Buckinghamshire, Bedfordshire and Northamptonshire.</p>' +
         '<p><a href="/sell-land-buckinghamshire">Buckinghamshire</a> · <a href="/sell-land-bedfordshire">Bedfordshire</a> · <a href="/sell-land-northamptonshire">Northamptonshire</a> · <a href="/sell-land-northamptonshire-thrapston">Thrapston area</a> · <a href="/sell-land-northamptonshire-towcester">Towcester area</a></p>' +
         '<p>Abel Gray, Milton Keynes · <a href="tel:01908870199">01908 870199</a> · <a href="mailto:info@abelgray.co.uk">info@abelgray.co.uk</a></p>' +
