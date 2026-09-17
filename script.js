@@ -290,26 +290,13 @@ document.addEventListener('click', function (event) {
     }
 });
 
-// Keep the full local coverage visible at the bottom of every page.
-const siteCoverageMarkup = `
-    <section class="site-coverage" aria-labelledby="site-coverage-title">
-        <div class="container">
-            <h2 id="site-coverage-title">Areas We Cover</h2>
-            <p><strong>Buckinghamshire:</strong> Buckingham, Milton Keynes, Newport Pagnell, Olney, Castlethorpe, Haversham, Emberton, Weston Underwood, Ravenstone, Clifton Reynes, Gayhurst, Tyringham, Filgrave, North Crawley, Astwood, Little Brickhill, Woburn Sands, Wavendon, Whaddon, Nash, Winslow, Maids Moreton, Akeley, Leckhampstead, Thornborough, Thornton, Beachampton, Calverton, Stony Stratford, Swanbourne, Drayton Parslow, Cheddington, Mentmore, Slapton, Soulbury, Stewkley, Wing and Wingrave.</p>
-            <p><strong>Bedfordshire:</strong> Bedford, Leighton Buzzard, Dunstable, Stanbridge, Billington, Ledburn, Milton Bryan, Husborne Crawley, Ridgmont, Aspley Guise, Marston Moretaine, Westoning, Harlington, Toddington, Chalgrave, Wingfield, Barton-le-Clay, Silsoe, Clophill, Maulden, Meppershall, Shefford, Clifton, Henlow, Stotfold and Arlesey.</p>
-            <p><strong>Northamptonshire:</strong> Northampton, Kettering, Corby, Daventry, Brackley, Wellingborough, Irthlingborough, Rushden, Higham Ferrers, Finedon, Burton Latimer, Desborough, Rothwell, Geddington, Broughton, Isham, Earls Barton, Ecton, Mears Ashby, Sywell, Moulton, Brixworth, Pitsford, Chapel Brampton, Weedon, Bugbrooke, Nether Heyford and Harpole.</p>
-            <p><strong>Thrapston area:</strong> Thrapston, Slipton, Oundle, Brigstock, Denford, Warmington, Cotterstock, Achurch, Woodford, Twywell, Fotheringhay, Aldwincle, Glapthorn, Deenethorpe, Titchmarsh, Islip, Ringstead, Great Addington, Little Addington, Sudborough, Lowick, Thorpe Waterville, Clopton, Barnwell, Pilton, Wadenhoe, Lilford, Stoke Doyle, Grafton Underwood, Cranford, Raunds, Chelveston and Hargrave.</p>
-            <p><strong>Towcester area:</strong> Towcester, Paulerspury, Greens Norton, Silverstone, Blisworth, Stoke Bruerne, Cosgrove, Old Stratford, Roade, Yardley Gobion, Pury End, Grafton Regis, Hartwell, Whittlebury, Abthorpe, Wappenham, Blakesley, Woodend, Syresham, Bradden, Shutlanger, Alderton, Potterspury, Deanshanger, Wicken, Passenham, Ashton, Gayton, Tiffield, Easton Neston, Cold Higham, Pattishall, Astcote, Eastcote, Litchborough, Adstone, Maidford, Slapton, Wood Burcote and Caldecote.</p>
-        </div>
-    </section>`;
-
-document.querySelectorAll('footer').forEach(footer => {
-    footer.insertAdjacentHTML('beforebegin', siteCoverageMarkup);
-});
-
-// Provide the same company and privacy details in every existing footer.
+// Keep a compact, consistent coverage summary in every existing footer.
 document.querySelectorAll('footer .container').forEach(footer => {
-    footer.innerHTML = '<p>&copy; <span id="copyright-year">' + new Date().getFullYear() + '</span> Abel Gray</p><p>Property investment, land and residential development across London, the Midlands and South East.</p><p>Phone: <a href="tel:+441908870199">01908 870199</a></p><div class="footer-legal">Abel Gray is a trading name of <a href="https://find-and-update.company-information.service.gov.uk/company/14625321" target="_blank" rel="noopener">Abel Gray Homes Limited</a>, registered in England and Wales, company number 14625321. Registered office: 1st Floor, 14 Fulwood Place, London WC1V 6HZ. <a href="/privacy-policy">Privacy Policy</a></div>';
+    footer.innerHTML = '<h2>Areas We Cover</h2>' +
+        '<p>We buy land and residential development opportunities across Buckinghamshire, Bedfordshire and Northamptonshire.</p>' +
+        '<p><a href="/sell-land-buckinghamshire">Buckinghamshire</a> · <a href="/sell-land-bedfordshire">Bedfordshire</a> · <a href="/sell-land-northamptonshire">Northamptonshire</a> · <a href="/sell-land-northamptonshire-thrapston">Thrapston area</a> · <a href="/sell-land-northamptonshire-towcester">Towcester area</a></p>' +
+        '<p>Abel Gray, Milton Keynes · <a href="tel:01908870199">01908 870199</a> · <a href="mailto:info@abelgray.co.uk">info@abelgray.co.uk</a></p>' +
+        '<div class="footer-legal">Abel Gray is a trading name of <a href="https://find-and-update.company-information.service.gov.uk/company/14625321" target="_blank" rel="noopener">Abel Gray Homes Limited</a>, registered in England and Wales, company number 14625321. Registered office: 1st Floor, 14 Fulwood Place, London WC1V 6HZ. <a href="/privacy-policy">Privacy Policy</a></div>';
 });
 
 (function () {
