@@ -1279,6 +1279,12 @@ footer a:hover {
         grid-template-columns: 1fr;
         gap: 1rem;
     }
+
+    .tews-cover-grid.single .tews-cover-figure img {
+        height: auto;
+        aspect-ratio: auto;
+        object-fit: contain;
+    }
 }
 
 /* Developments Detail */
