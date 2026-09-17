@@ -22,7 +22,7 @@
     <title>Property Investment, Land &amp; Residential Development | Abel Gray</title>
     <link rel="canonical" href="https://abelgray.co.uk/">
     <link rel="preload" as="image" href="optimized_images/responsive/pepys-lane-hero-1280.avif" imagesrcset="optimized_images/responsive/pepys-lane-hero-480.avif 480w, optimized_images/responsive/pepys-lane-hero-960.avif 960w, optimized_images/responsive/pepys-lane-hero-1280.avif 1280w, optimized_images/responsive/pepys-lane-hero-1672.avif 1672w" imagesizes="100vw" type="image/avif" fetchpriority="high">
-    <link rel="stylesheet" href="style.css?v=20260918h">
+    <link rel="stylesheet" href="style.css?v=20260918l">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -262,8 +262,16 @@
                     <div class="form-field">
                         <input type="tel" id="contact-number" name="Contact number" placeholder="Contact number" autocomplete="tel" inputmode="tel" title="Enter a UK number such as 01908 870199 or +44 1908 870199">
                     </div>
-                    <input type="text" name="location" placeholder="Site address" autocomplete="street-address" required>
-                    <input type="text" name="postcode" placeholder="Postcode" autocomplete="postal-code" required>
+                    <input type="text" name="location" placeholder="Site address / postcode" autocomplete="street-address" required>
+                    <select name="enquiry_type" required>
+                        <option value="" disabled selected>Type of enquiry</option>
+                        <option value="Land for sale">Land for sale</option>
+                        <option value="Property for sale">Property for sale</option>
+                        <option value="Planning opportunity">Planning opportunity</option>
+                        <option value="Commercial property">Commercial property</option>
+                        <option value="New home enquiry">New home enquiry</option>
+                        <option value="Other">Other</option>
+                    </select>
                     <textarea name="message" placeholder="Tell us about your enquiry..." rows="5" required></textarea>
                     <input type="hidden" name="form_loaded" id="form_loaded" value="">
                     <input type="hidden" name="enquiry_source" value="website">
