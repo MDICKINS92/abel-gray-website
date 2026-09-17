@@ -16,6 +16,45 @@ function trackAnalyticsEvent(name, data) {
 
 const analyticsPage = window.location.pathname || '/';
 
+document.querySelectorAll('.navbar').forEach(navbar => {
+    const toggle = navbar.querySelector('.nav-toggle');
+    const menu = navbar.querySelector('.nav-links');
+
+    if (!toggle || !menu) return;
+
+    function closeMenu(returnFocus = false) {
+        menu.classList.remove('is-open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.setAttribute('aria-label', 'Open menu');
+        if (returnFocus) toggle.focus();
+    }
+
+    toggle.addEventListener('click', function () {
+        const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+        if (isOpen) {
+            closeMenu();
+        } else {
+            menu.classList.add('is-open');
+            toggle.setAttribute('aria-expanded', 'true');
+            toggle.setAttribute('aria-label', 'Close menu');
+        }
+    });
+
+    menu.addEventListener('click', function (event) {
+        if (event.target.closest('a')) closeMenu();
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') {
+            closeMenu(true);
+        }
+    });
+
+    window.addEventListener('resize', function () {
+        if (window.innerWidth > 900) closeMenu();
+    });
+});
+
 // CTA Button click handler
 const ctaButton = document.querySelector('.cta-button');
 if (ctaButton) {
@@ -293,7 +332,6 @@ document.addEventListener('click', function (event) {
 // Keep a compact, consistent coverage summary in every existing footer.
 document.querySelectorAll('footer .container').forEach(footer => {
     footer.innerHTML = '<h2>Areas We Cover</h2>' +
-        '<p class="footer-links"><a href="/blog">Blog</a><a href="/asset-management">Asset Management</a></p>' +
         '<p>We buy land and residential development opportunities across Buckinghamshire, Bedfordshire and Northamptonshire.</p>' +
         '<p><a href="/sell-land-buckinghamshire">Buckinghamshire</a> · <a href="/sell-land-bedfordshire">Bedfordshire</a> · <a href="/sell-land-northamptonshire">Northamptonshire</a> · <a href="/sell-land-northamptonshire-thrapston">Thrapston area</a> · <a href="/sell-land-northamptonshire-towcester">Towcester area</a></p>' +
         '<p>Abel Gray, Milton Keynes · <a href="tel:01908870199">01908 870199</a> · <a href="mailto:info@abelgray.co.uk">info@abelgray.co.uk</a></p>' +
