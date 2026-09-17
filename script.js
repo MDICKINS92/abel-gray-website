@@ -390,8 +390,8 @@ document.querySelectorAll('footer .container').forEach(footer => {
         "optimized_images/pepys-aster-front.jpg": ["pepys-lane-aster", 1448],
         "optimized_images/pepys-lily-rear.jpg": ["pepys-lane-lily", 1086],
         "optimized_images/pepys-peony-front.jpg": ["pepys-lane-peony", 1086],
-        "optimized_images/site-photo-1.jpg": ["pepys-lane-site-01", 600],
-        "optimized_images/site-photo-2.jpg": ["pepys-lane-site-02", 600]
+        "optimized_images/site-photo-1.jpg": ["pepys-lane-site-01", 800],
+        "optimized_images/site-photo-2.jpg": ["pepys-lane-site-02", 800]
     };
 
     function sourceSet(base, extension, maximum) {
