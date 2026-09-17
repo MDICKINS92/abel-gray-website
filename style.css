@@ -901,6 +901,24 @@ section:last-of-type {
     margin-bottom: 1rem;
 }
 
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.contact-form .form-field input {
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.form-helper {
+    margin: 0;
+    color: #555;
+    font-size: 0.78rem;
+    line-height: 1.5;
+}
+
 .contact-form input,
 .contact-form textarea {
     padding: 1rem;

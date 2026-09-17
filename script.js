@@ -16,20 +16,6 @@ function trackAnalyticsEvent(name, data) {
 
 const analyticsPage = window.location.pathname || '/';
 
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        const href = this.getAttribute('href');
-        if (href && href !== '#' && href.length > 1) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    });
-});
-
 // CTA Button click handler
 const ctaButton = document.querySelector('.cta-button');
 if (ctaButton) {
@@ -50,16 +36,38 @@ if (formLoadedField) {
 // Contact form submission handled by Web3Forms with hCaptcha spam protection
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
+    const contactNumberField = contactForm.querySelector('#contact-number');
 
-        // Honeypot checks — hidden fields bots tend to fill
-        const websiteField = this.querySelector('input[name="website"]');
-        const phoneAltField = this.querySelector('input[name="phone_number"]');
-        const companyField = this.querySelector('input[name="company"]');
-        if ((websiteField && websiteField.value) ||
-            (phoneAltField && phoneAltField.value) ||
-            (companyField && companyField.value)) {
+    function validateContactNumber() {
+        if (!contactNumberField) return true;
+
+        const enteredNumber = contactNumberField.value.trim();
+        if (!enteredNumber) {
+            contactNumberField.setCustomValidity('');
+            return !contactNumberField.required;
+        }
+
+        const compactNumber = enteredNumber.replace(/[\s()-]/g, '');
+        const normalizedNumber = compactNumber.startsWith('+440')
+            ? `+44${compactNumber.slice(4)}`
+            : compactNumber;
+        const isValid = /^(?:\+44\d{10}|0\d{10})$/.test(normalizedNumber);
+
+        contactNumberField.setCustomValidity(isValid
+            ? ''
+            : 'Enter a valid UK contact number, such as 01908 870199 or +44 1908 870199.');
+        return isValid;
+    }
+
+    if (contactNumberField) {
+        contactNumberField.addEventListener('input', validateContactNumber);
+        contactNumberField.addEventListener('blur', validateContactNumber);
+    }
+
+    contactForm.addEventListener('submit', function(e) {
+        if (!validateContactNumber()) {
             e.preventDefault();
+            contactNumberField.reportValidity();
             return false;
         }
 
@@ -124,13 +132,107 @@ document.querySelectorAll('.contact-form').forEach(form => {
         form.appendChild(sourceField);
     }
     sourceField.value = enquirySource;
+
+    const contactNumberField = form.querySelector('#contact-number');
+    if (contactNumberField) {
+        const isLandEnquiry = enquirySource.toLowerCase().startsWith('land');
+        contactNumberField.required = isLandEnquiry;
+        contactNumberField.setAttribute('aria-required', isLandEnquiry ? 'true' : 'false');
+    }
 });
 
 document.querySelectorAll('a[href*="#contact"]').forEach(link => {
     const href = link.getAttribute('href');
-    if (!href || href.includes('source=')) return;
-    const separator = href.includes('?') ? '&' : '?';
-    link.setAttribute('href', `${href.split('#')[0]}${separator}source=${encodeURIComponent(enquirySource)}#contact`);
+    if (!href) return;
+
+    try {
+        const url = new URL(href, window.location.href);
+        const incomingSource = new URLSearchParams(window.location.search).get('source');
+        if (incomingSource || !url.searchParams.has('source')) {
+            url.searchParams.set('source', incomingSource || enquirySource);
+        }
+        link.setAttribute('href', `${url.pathname}${url.search}${url.hash}`);
+    } catch (error) {
+        // Leave an unparseable link unchanged.
+    }
+});
+
+function scrollToPageHash(hash, behavior) {
+    if (!hash || hash === '#') return false;
+
+    let target;
+    try {
+        target = document.getElementById(decodeURIComponent(hash.slice(1)));
+    } catch (error) {
+        return false;
+    }
+    if (!target) return false;
+
+    if (hash.toLowerCase() === '#contact') {
+        target = document.getElementById('enquiry-form') || target;
+    }
+
+    const header = document.querySelector('.navbar');
+    const headerHeight = header ? header.getBoundingClientRect().height : 0;
+    const top = Math.max(0, target.getBoundingClientRect().top + window.scrollY - headerHeight - 16);
+    window.scrollTo({ top: top, behavior: behavior });
+    return true;
+}
+
+document.addEventListener('click', function (event) {
+    const link = event.target.closest('a[href]');
+    if (!link) return;
+
+    let url;
+    try {
+        url = new URL(link.href, window.location.href);
+    } catch (error) {
+        return;
+    }
+
+    const currentPath = window.location.pathname.replace(/\/index\.html$/, '/');
+    const targetPath = url.pathname.replace(/\/index\.html$/, '/');
+    if (url.origin !== window.location.origin || targetPath !== currentPath || !url.hash) return;
+    if (!document.getElementById(decodeURIComponent(url.hash.slice(1)))) return;
+
+    event.preventDefault();
+    window.history.pushState(null, '', `${url.pathname}${url.search}${url.hash}`);
+    window.requestAnimationFrame(function () {
+        scrollToPageHash(url.hash, 'smooth');
+    });
+});
+
+function settleInitialHashPosition() {
+    if (!window.location.hash) return;
+
+    [0, 250, 1000].forEach(function (delay) {
+        window.setTimeout(function () {
+            window.requestAnimationFrame(function () {
+                scrollToPageHash(window.location.hash, 'auto');
+            });
+        }, delay);
+    });
+}
+
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', settleInitialHashPosition);
+} else {
+    settleInitialHashPosition();
+}
+
+if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(settleInitialHashPosition).catch(function () {
+        // The existing DOM and load retries still position the form.
+    });
+}
+
+window.addEventListener('load', function () {
+    window.requestAnimationFrame(function () {
+        scrollToPageHash(window.location.hash, 'auto');
+        window.setTimeout(function () {
+            scrollToPageHash(window.location.hash, 'auto');
+        }, 500);
+    });
 });
 
 function analyticsLinkLocation(link) {

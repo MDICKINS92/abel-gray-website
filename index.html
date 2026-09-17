@@ -22,7 +22,7 @@
     <title>Property Investment, Land &amp; Residential Development | Abel Gray</title>
     <link rel="canonical" href="https://abelgray.co.uk/">
     <link rel="preload" as="image" href="optimized_images/responsive/pepys-lane-hero-1280.avif" imagesrcset="optimized_images/responsive/pepys-lane-hero-480.avif 480w, optimized_images/responsive/pepys-lane-hero-960.avif 960w, optimized_images/responsive/pepys-lane-hero-1280.avif 1280w, optimized_images/responsive/pepys-lane-hero-1672.avif 1672w" imagesizes="100vw" type="image/avif" fetchpriority="high">
-    <link rel="stylesheet" href="style.css?v=20260827b">
+    <link rel="stylesheet" href="style.css?v=20260918a">
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
@@ -250,16 +250,17 @@
                     <input type="hidden" name="subject" value="New Home, Land & Commercial Enquiry - Abel Gray">
                     <input type="hidden" name="from_name" value="Abel Gray Website">
                     <input type="hidden" name="botcheck" style="display: none;">
-                    <input type="text" name="website" style="display: none;" tabindex="-1" autocomplete="off">
-                    <input type="text" name="phone_number" style="display: none;" tabindex="-1" autocomplete="off">
-                    <input type="text" name="company" style="display: none;" tabindex="-1" autocomplete="off">
+                    <h3>Property, Land &amp; New Home Enquiry</h3>
+                    <input type="text" name="name" placeholder="Your Name" autocomplete="name" required>
+                    <input type="email" name="email" placeholder="Email" autocomplete="email" required>
+                    <div class="form-field">
+                        <input type="tel" id="contact-number" name="Contact number" placeholder="Contact number" autocomplete="tel" inputmode="tel" title="Enter a UK number such as 01908 870199 or +44 1908 870199" aria-describedby="contact-number-help">
+                        <p class="form-helper" id="contact-number-help">So we can call you to discuss your site.</p>
+                    </div>
+                    <input type="text" name="location" placeholder="Site address or postcode" autocomplete="street-address" required>
+                    <textarea name="message" placeholder="Tell us about your enquiry..." rows="5" required></textarea>
                     <input type="hidden" name="form_loaded" id="form_loaded" value="">
                     <input type="hidden" name="enquiry_source" value="website">
-                    <h3>Property, Land &amp; New Home Enquiry</h3>
-                    <input type="text" name="name" placeholder="Your Name" required>
-                    <input type="email" name="email" placeholder="Email" required>
-                    <input type="text" name="location" placeholder="Property or land location" required>
-                    <textarea name="message" placeholder="Tell us about your enquiry..." rows="5" required></textarea>
                     <div class="h-captcha" data-captcha="true"></div>
                     <p class="form-privacy">We use your details only to respond to your enquiry. See our <a href="/privacy-policy">privacy policy</a>.</p>
                     <button type="submit">Send Enquiry</button>
@@ -307,6 +308,6 @@
 
     <script src="https://web3forms.com/client/script.js" async defer></script>
     <script src="project-data.js?v=20260827"></script>
-    <script src="script.js?v=20260912a"></script>
+    <script src="script.js?v=20260918a"></script>
 </body>
 </html>
