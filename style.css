@@ -382,6 +382,14 @@ section:last-of-type {
     margin-top: 1.75rem;
 }
 
+.narrative-copy > p {
+    margin-bottom: 0 !important;
+}
+
+.narrative-copy > p + p {
+    margin-top: 1.75rem !important;
+}
+
 /* About Section */
 .about {
     background-color: #F1ECE1;
@@ -1219,6 +1227,10 @@ footer a:hover {
 
     .location-intro p + p {
         margin-top: 1.5rem;
+    }
+
+    .narrative-copy > p + p {
+        margin-top: 1.5rem !important;
     }
 
     .navbar .container {
