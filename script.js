@@ -309,7 +309,7 @@ document.querySelectorAll('footer').forEach(footer => {
 
 // Provide the same company and privacy details in every existing footer.
 document.querySelectorAll('footer .container').forEach(footer => {
-    footer.innerHTML = '<p>&copy; <span id="copyright-year">' + new Date().getFullYear() + '</span> Abel Gray</p><p>Property investment, land and residential development across London, the Midlands and South East.</p><div class="footer-legal">Abel Gray is a trading name of <a href="https://find-and-update.company-information.service.gov.uk/company/14625321" target="_blank" rel="noopener">Abel Gray Homes Limited</a>, registered in England and Wales, company number 14625321. Registered office: 1st Floor, 14 Fulwood Place, London WC1V 6HZ. <a href="/privacy-policy">Privacy Policy</a></div>';
+    footer.innerHTML = '<p>&copy; <span id="copyright-year">' + new Date().getFullYear() + '</span> Abel Gray</p><p>Property investment, land and residential development across London, the Midlands and South East.</p><p>Phone: <a href="tel:+441908870199">01908 870199</a></p><div class="footer-legal">Abel Gray is a trading name of <a href="https://find-and-update.company-information.service.gov.uk/company/14625321" target="_blank" rel="noopener">Abel Gray Homes Limited</a>, registered in England and Wales, company number 14625321. Registered office: 1st Floor, 14 Fulwood Place, London WC1V 6HZ. <a href="/privacy-policy">Privacy Policy</a></div>';
 });
 
 (function () {
