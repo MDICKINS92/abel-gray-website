@@ -408,8 +408,8 @@ document.querySelectorAll('footer .container').forEach(footer => {
         document.body.appendChild(cookieNotice);
     }
 
-    cookieNotice.innerHTML = '<p>We use essential cookies and hCaptcha to keep the enquiry form secure. With your permission, we also use Google Analytics to understand website visits. <a href="/privacy-policy">Privacy policy</a></p>' +
-        '<div class="cookie-notice-actions"><button type="button" class="cookie-reject" id="cookie-reject">Reject analytics</button><button type="button" id="cookie-accept">Accept analytics</button></div>';
+    cookieNotice.innerHTML = '<p>Allow anonymous analytics to help us improve this website? <a href="/privacy-policy">Privacy policy</a></p>' +
+        '<div class="cookie-notice-actions"><button type="button" class="cookie-reject" id="cookie-reject">No thanks</button><button type="button" id="cookie-accept">Allow</button></div>';
     cookieNotice.hidden = false;
     cookieNotice.removeAttribute('aria-hidden');
     cookieNotice.classList.remove('is-hidden');
