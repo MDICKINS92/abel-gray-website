@@ -343,7 +343,10 @@ document.querySelectorAll('footer .container').forEach(footer => {
 
 (function () {
     const measurementId = 'G-1362FMBH8H';
+    const adsId = 'AW-18444441444';
+    const enquiryConversionId = 'AW-18444441444/6Cu5COj8ivwcEOSu_9pE';
     const consentKey = 'abel-gray-analytics-consent';
+    let enquiryConversionSent = false;
 
     function readConsent() {
         try {
@@ -377,11 +380,17 @@ document.querySelectorAll('footer .container').forEach(footer => {
         };
         window.gtag('js', new Date());
         window.gtag('config', measurementId, { anonymize_ip: true });
+        window.gtag('config', adsId);
 
         const analyticsScript = document.createElement('script');
         analyticsScript.async = true;
         analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
         analyticsScript.dataset.googleAnalytics = measurementId;
+        analyticsScript.addEventListener('load', function () {
+            if (!document.body.hasAttribute('data-enquiry-conversion') || enquiryConversionSent) return;
+            enquiryConversionSent = true;
+            window.gtag('event', 'conversion', { send_to: enquiryConversionId });
+        }, { once: true });
         document.head.appendChild(analyticsScript);
     }
 
