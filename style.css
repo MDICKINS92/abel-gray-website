@@ -1229,6 +1229,17 @@ footer a:hover {
     cursor: pointer;
 }
 
+.cookie-notice-actions {
+    display: flex;
+    flex: 0 0 auto;
+    gap: 0.5rem;
+}
+
+.cookie-notice .cookie-reject {
+    background: transparent;
+    color: #000;
+}
+
 .form-privacy {
     margin: 1rem 0 0;
     font-size: 0.78rem;
@@ -1242,7 +1253,12 @@ footer a:hover {
         bottom: 0.75rem;
         left: 0.75rem;
         max-width: none;
-        align-items: flex-start;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cookie-notice-actions {
+        justify-content: flex-end;
     }
 }
 

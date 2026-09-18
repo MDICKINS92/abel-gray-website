@@ -9,6 +9,9 @@ if (copyrightYear) {
 function trackAnalyticsEvent(name, data) {
     try {
         window.umami?.track(name, data);
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', name, data);
+        }
     } catch (error) {
         // Analytics must never interrupt a visitor action.
     }
@@ -339,50 +342,88 @@ document.querySelectorAll('footer .container').forEach(footer => {
 });
 
 (function () {
-    const cookieNotice = document.getElementById('cookie-notice');
-    const cookieNoticeDismiss = document.getElementById('cookie-notice-dismiss');
-    const cookieKey = 'abel-gray-cookie-notice-dismissed';
+    const measurementId = 'G-1362FMBH8H';
+    const consentKey = 'abel-gray-analytics-consent';
 
-    if (!cookieNotice) return;
-
-    function hasDismissedNotice() {
+    function readConsent() {
         try {
-            if (window.localStorage.getItem(cookieKey) === 'true') return true;
+            const storedChoice = window.localStorage.getItem(consentKey);
+            if (storedChoice) return storedChoice;
         } catch (error) {
             // Use the first-party cookie fallback below when storage is restricted.
         }
-        return document.cookie.split('; ').some(cookie => cookie === `${cookieKey}=true`);
+
+        const consentCookie = document.cookie.split('; ').find(cookie => cookie.startsWith(`${consentKey}=`));
+        return consentCookie ? consentCookie.split('=')[1] : null;
     }
 
-    function rememberDismissal() {
+    function rememberConsent(choice) {
         try {
-            window.localStorage.setItem(cookieKey, 'true');
+            window.localStorage.setItem(consentKey, choice);
         } catch (error) {
             // The cookie fallback still persists the choice when localStorage is blocked.
         }
-        document.cookie = `${cookieKey}=true; max-age=31536000; path=/; SameSite=Lax`;
+
+        const secureAttribute = window.location.protocol === 'https:' ? '; Secure' : '';
+        document.cookie = `${consentKey}=${choice}; max-age=31536000; path=/; SameSite=Lax${secureAttribute}`;
     }
 
-    function hideNotice() {
-        cookieNotice.hidden = true;
-        cookieNotice.setAttribute('aria-hidden', 'true');
-        cookieNotice.classList.add('is-hidden');
+    function loadGoogleAnalytics() {
+        if (document.querySelector(`script[data-google-analytics="${measurementId}"]`)) return;
+
+        window.dataLayer = window.dataLayer || [];
+        window.gtag = window.gtag || function () {
+            window.dataLayer.push(arguments);
+        };
+        window.gtag('js', new Date());
+        window.gtag('config', measurementId, { anonymize_ip: true });
+
+        const analyticsScript = document.createElement('script');
+        analyticsScript.async = true;
+        analyticsScript.src = `https://www.googletagmanager.com/gtag/js?id=${measurementId}`;
+        analyticsScript.dataset.googleAnalytics = measurementId;
+        document.head.appendChild(analyticsScript);
     }
 
-    if (hasDismissedNotice()) {
-        hideNotice();
-    } else {
-        cookieNotice.hidden = false;
-        cookieNotice.removeAttribute('aria-hidden');
-        cookieNotice.classList.remove('is-hidden');
+    function hideNotice(notice) {
+        notice.hidden = true;
+        notice.setAttribute('aria-hidden', 'true');
+        notice.classList.add('is-hidden');
     }
 
-    if (cookieNoticeDismiss) {
-        cookieNoticeDismiss.addEventListener('click', function () {
-            rememberDismissal();
-            hideNotice();
-        });
+    const existingChoice = readConsent();
+    if (existingChoice === 'accepted') {
+        loadGoogleAnalytics();
+        return;
     }
+    if (existingChoice === 'rejected') return;
+
+    let cookieNotice = document.getElementById('cookie-notice');
+    if (!cookieNotice) {
+        cookieNotice = document.createElement('aside');
+        cookieNotice.id = 'cookie-notice';
+        cookieNotice.className = 'cookie-notice';
+        cookieNotice.setAttribute('role', 'region');
+        cookieNotice.setAttribute('aria-label', 'Cookie choices');
+        document.body.appendChild(cookieNotice);
+    }
+
+    cookieNotice.innerHTML = '<p>We use essential cookies and hCaptcha to keep the enquiry form secure. With your permission, we also use Google Analytics to understand website visits. <a href="/privacy-policy">Privacy policy</a></p>' +
+        '<div class="cookie-notice-actions"><button type="button" class="cookie-reject" id="cookie-reject">Reject analytics</button><button type="button" id="cookie-accept">Accept analytics</button></div>';
+    cookieNotice.hidden = false;
+    cookieNotice.removeAttribute('aria-hidden');
+    cookieNotice.classList.remove('is-hidden');
+
+    document.getElementById('cookie-accept').addEventListener('click', function () {
+        rememberConsent('accepted');
+        loadGoogleAnalytics();
+        hideNotice(cookieNotice);
+    });
+
+    document.getElementById('cookie-reject').addEventListener('click', function () {
+        rememberConsent('rejected');
+        hideNotice(cookieNotice);
+    });
 })();
 
 // Upgrade lazy-loaded legacy gallery images to responsive AVIF/WebP sources.
