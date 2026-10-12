@@ -2224,6 +2224,15 @@ a.county-link:visited .towns {
     }
 }
 
+/* Keep project facts readable on narrow phones without horizontal scrolling. */
+@media (max-width: 380px) {
+    .detail-grid,
+    .specs-grid {
+        /* Field View House also sets its columns inline. */
+        grid-template-columns: 1fr !important;
+    }
+}
+
 /* County CTA prompt */
 .county-cta {
     margin-top: 16px;
