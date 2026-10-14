@@ -1,0 +1,5 @@
+- [Clean URL handling](preview-route-handling.md) — use clean internal URLs despite local preview limits; production redirects every content `.html` URL and preserves the Google verification file.
+- [Local coverage placement](site-wide-local-coverage.md) — keep full town/village lists on area pages only; use a compact linked coverage summary in the sitewide footer.
+- [Netlify release workflow](netlify-release-workflow.md) — release site changes through the GitHub main branch; Netlify deploys them automatically, not Replit Publish.
+- [Contact-link behavior](contact-link-behavior.md) — all contact links keep attribution and land directly on the homepage enquiry form below the sticky header.
+- [Paused projects](paused-projects.md) — keep Lindoe Meadows / Great Addington unpublished until explicitly requested; preserve exact restoration content.

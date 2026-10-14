@@ -1,0 +1,209 @@
+diff --git b/_redirects a/_redirects
+index 1fb7300..86dd5be 100644
+--- b/_redirects
++++ a/_redirects
+@@ -1,5 +1,3 @@
+-/lindoe-meadows* /developments 302!
+-/.agents/* /index.html 404!
+ /locations.html /sell-your-land 301!
+ /locations /sell-your-land 301!
+ /index.html / 301!
+diff --git b/blog.html a/blog.html
+index eb215d0..a2b5c39 100644
+--- b/blog.html
++++ a/blog.html
+@@ -130,7 +130,7 @@
+                 <p>We are grateful to everyone who has been part of bringing this development to completion, and we wish all three households many happy years in their new homes.</p>
+ 
+                 <div class="blog-article-cta">
+-                    <p><strong>Interested in future projects?</strong> You can register your interest for future updates.</p>
++                    <p><strong>Interested in future projects?</strong> Lindoe Meadows is a forthcoming Abel Gray residential scheme in Great Addington, Northamptonshire. You can register your interest for future updates.</p>
+                     <a href="/#contact" class="btn btn-primary">Get in Touch</a>
+                 </div>
+             </div>
+diff --git b/developments.html a/developments.html
+index 33dc029..759fc27 100644
+--- b/developments.html
++++ a/developments.html
+@@ -99,6 +99,23 @@
+                     </div>
+                 </a>
+ 
++                <a href="/lindoe-meadows" class="project-card" data-project-card="lindoe-meadows">
++                    <div class="project-card-image">
++                        <div class="project-card-placeholder">
++                            <span>Lindoe Meadows</span>
++                        </div>
++                        <div class="development-status coming-soon card-image-badge">
++                            <span data-project-status>Coming Soon</span>
++                        </div>
++                    </div>
++                    <div class="project-card-body">
++                        <h2 data-project-name>Lindoe Meadows</h2>
++                        <p class="project-card-location" data-project-location>Great Addington, Northamptonshire</p>
++                        <p class="project-card-desc" data-project-description>A small collection of individually designed detached homes in the Northamptonshire countryside. Further information will be released as the scheme progresses.</p>
++                        <span class="project-card-link">View project &rsaquo;</span>
++                    </div>
++                </a>
++
+                 <a href="/ecl-mews" class="project-card" data-project-card="ecl-mews">
+                     <div class="project-card-image">
+                         <img src="optimized_images/CGI_4_1766488930082.jpg" alt="ECL Mews Bedfordshire - upcoming mews development CGI" loading="lazy">
+@@ -124,7 +141,7 @@
+         </div>
+     </footer>
+ 
+-    <script src="project-data.js?v=20261012b"></script>
++    <script src="project-data.js?v=20260827"></script>
+     <script src="script.js?v=20260918r"></script>
+ </body>
+ </html>
+diff --git b/ecl-mews.html a/ecl-mews.html
+index c6b3313..426e173 100644
+--- b/ecl-mews.html
++++ a/ecl-mews.html
+@@ -168,7 +168,7 @@
+         </div>
+     </footer>
+ 
+-    <script src="project-data.js?v=20261012b"></script>
++    <script src="project-data.js?v=20260827"></script>
+     <script src="script.js?v=20260918r"></script>
+ </body>
+ </html>
+diff --git b/field-view-house.html a/field-view-house.html
+index a764653..2d2c4df 100644
+--- b/field-view-house.html
++++ a/field-view-house.html
+@@ -142,7 +142,7 @@
+         </div>
+     </footer>
+ 
+-    <script src="project-data.js?v=20261012b"></script>
++    <script src="project-data.js?v=20260827"></script>
+     <script src="script.js?v=20260918r"></script>
+ </body>
+ </html>
+diff --git b/index.html a/index.html
+index e617205..5d55cb2 100644
+--- b/index.html
++++ a/index.html
+@@ -220,6 +220,15 @@
+                     <p data-project-description>A private country residence on the edge of Paulerspury, combining natural stone, traditional architecture and a layout designed around modern family living.</p>
+                     <a href="/field-view-house" class="card-link">View project &rarr;</a>
+                 </div>
++                <div class="service-card project-card" data-project-card="lindoe-meadows">
++                    <div class="update-header" style="flex-direction:column;gap:0.15rem;margin-bottom:0.5rem;">
++                        <span class="update-date" data-project-status>Coming Soon</span>
++                        <span class="update-location" data-project-location>Great Addington, Northamptonshire</span>
++                    </div>
++                    <h3 data-project-name>Lindoe Meadows</h3>
++                    <p data-project-description>A collection of individually designed detached homes in the Northamptonshire countryside. Further information will be released as the scheme progresses.</p>
++                    <a href="/lindoe-meadows" class="card-link">View project &rarr;</a>
++                </div>
+                 <div class="service-card project-card" data-project-card="ecl-mews">
+                     <div class="sold-image-wrap" style="margin-bottom:1rem;">
+                         <picture><source srcset="optimized_images/responsive/ecl-mews-cgi-04-480.avif 480w, optimized_images/responsive/ecl-mews-cgi-04-800.avif 800w, optimized_images/responsive/ecl-mews-cgi-04-1200.avif 1200w" sizes="(max-width: 992px) 100vw, 33vw" type="image/avif"><source srcset="optimized_images/responsive/ecl-mews-cgi-04-480.webp 480w, optimized_images/responsive/ecl-mews-cgi-04-800.webp 800w, optimized_images/responsive/ecl-mews-cgi-04-1200.webp 1200w" sizes="(max-width: 992px) 100vw, 33vw" type="image/webp"><img src="optimized_images/CGI_4_1766488930082.jpg" alt="ECL Mews Bedfordshire - upcoming mews development CGI" loading="lazy" width="1200" height="800" style="width:100%;height:200px;object-fit:cover;display:block;"></picture>
+@@ -309,7 +318,7 @@
+     </footer>
+ 
+     <script src="https://web3forms.com/client/script.js" async defer></script>
+-    <script src="project-data.js?v=20261012b"></script>
++    <script src="project-data.js?v=20260827"></script>
+     <script src="script.js?v=20260918r"></script>
+ </body>
+ </html>
+diff --git b/new-homes.html a/new-homes.html
+index 2e0673f..84a5598 100644
+--- b/new-homes.html
++++ a/new-homes.html
+@@ -204,6 +204,17 @@
+                 </div>
+             </div>
+ 
++            <div class="development-main" data-project-card="lindoe-meadows" style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid #ccc;">
++                <div class="development-status coming-soon">
++                    <span data-project-status>Coming Soon</span>
++                </div>
++                <h2 data-project-name>Lindoe Meadows</h2>
++                <div class="development-info" style="margin-top:1.5rem;">
++                    <p data-project-description>A proposed collection of six detached homes in Great Addington, Northamptonshire.</p>
++                    <a href="/lindoe-meadows" class="cta-button">View Project</a>
++                </div>
++            </div>
++
+             <div class="development-main" data-project-card="ecl-mews" style="margin-top: 4rem; padding-top: 3rem; border-top: 1px solid #ccc;">
+                 <div class="development-status coming-soon">
+                     <span data-project-status>Coming Soon</span>
+@@ -246,7 +257,7 @@
+         </div>
+     </footer>
+ 
+-    <script src="project-data.js?v=20261012b"></script>
++    <script src="project-data.js?v=20260827"></script>
+     <script src="script.js?v=20260918r"></script>
+ </body>
+ </html>
+diff --git b/pepys-lane.html a/pepys-lane.html
+index 51dc546..da34c5d 100644
+--- b/pepys-lane.html
++++ a/pepys-lane.html
+@@ -242,7 +242,7 @@
+         </div>
+     </footer>
+ 
+-    <script src="project-data.js?v=20261012b"></script>
++    <script src="project-data.js?v=20260827"></script>
+     <script src="script.js?v=20260918r"></script>
+ </body>
+ </html>
+diff --git b/project-data.js a/project-data.js
+index a71b830..b5e9128 100644
+--- b/project-data.js
++++ a/project-data.js
+@@ -26,6 +26,20 @@ window.ABEL_GRAY_PROJECTS = {
+         pageSubtitle: "Tews End Lane, Paulerspury, Northamptonshire",
+         schemaType: "House"
+     },
++    "lindoe-meadows": {
++        name: "Lindoe Meadows",
++        location: "Great Addington, Northamptonshire",
++        status: "Coming Soon",
++        description: "A proposed collection of six detached homes in Great Addington, Northamptonshire.",
++        homes: "6 detached dwellings",
++        bedrooms: "3, 4 & 5 bedroom homes",
++        url: "/lindoe-meadows",
++        seoTitle: "Lindoe Meadows, Northamptonshire | Abel Gray",
++        seoDescription: "Lindoe Meadows is a proposed collection of six detached homes in Great Addington, Northamptonshire.",
++        pageHeading: "Lindoe Meadows, Great Addington",
++        pageSubtitle: "A collection of six individually designed detached homes in the Northamptonshire countryside.",
++        schemaType: "Accommodation"
++    },
+     "ecl-mews": {
+         name: "ECL Mews",
+         location: "Bedfordshire",
+diff --git b/sell-land-thrapston.html a/sell-land-thrapston.html
+index 9aeec62..76fad9b 100644
+--- b/sell-land-thrapston.html
++++ a/sell-land-thrapston.html
+@@ -27,7 +27,7 @@
+          <div class="service-card"><h3>Consented Plots</h3><p>Sites with planning already in place, including permissions granted but never built out.</p><a href="/?source=land-thrapston-consented#contact" class="card-link">Sell your Consented Plots in Thrapston →</a></div>
+      </div><div class="towns-list"><h3>Thrapston Area Villages</h3><p><em>Around Thrapston:</em> Thrapston, Islip, Denford, Titchmarsh, Twywell, Woodford, Ringstead, Great Addington, Little Addington and Slipton.</p><p><em>Towards Oundle:</em> Oundle, Barnwell, Pilton, Wadenhoe, Aldwincle, Achurch, Lilford, Clopton, Stoke Doyle, Glapthorn, Cotterstock, Fotheringhay and Warmington.</p><p><em>The Rockingham Forest edge:</em> Brigstock, Sudborough, Lowick, Thorpe Waterville, Deenethorpe, Grafton Underwood and Cranford.</p><p><em>Towards Raunds:</em> Raunds, Chelveston and Hargrave.</p></div><div class="services-grid">
+          <div class="service-card"><h3>Local Context</h3><p>The villages around Thrapston commonly bring forward stone barns, redundant rural buildings, paddocks and development sites close to established settlements.</p></div>
+-         <div class="service-card"><h3>Project Context</h3><p><a href="/pepys-lane">Pepys Lane</a> in Slipton is a completed Abel Gray scheme of three homes, within a few miles of Thrapston.</p></div>
++         <div class="service-card"><h3>Project Context</h3><p><a href="/pepys-lane">Pepys Lane</a> in Slipton is a completed Abel Gray scheme of three homes. <a href="/lindoe-meadows">Lindoe Meadows</a> in Great Addington is a forthcoming scheme of six individually designed detached homes. Both are within a few miles of Thrapston.</p></div>
+     </div></div></section>
+     <section class="location-cta"><div class="container"><h2>Discuss an Opportunity</h2><p>If you have land or property in the Thrapston area, please contact us for a confidential initial conversation.</p><a href="/?source=land-thrapston#contact" class="btn btn-primary">Get in Touch</a></div></section>
+     <footer><div class="container"><p>&copy; <span id="copyright-year">2026</span> Abel Gray. Property, land and residential development.</p></div></footer>
+diff --git b/sitemap.xml a/sitemap.xml
+index 775eef8..8ba5e9a 100644
+--- b/sitemap.xml
++++ a/sitemap.xml
+@@ -13,6 +13,7 @@
+   <url><loc>https://abelgray.co.uk/sell-land-northamptonshire-towcester</loc><lastmod>2026-08-27</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+   <url><loc>https://abelgray.co.uk/pepys-lane</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+   <url><loc>https://abelgray.co.uk/field-view-house</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
++  <url><loc>https://abelgray.co.uk/lindoe-meadows</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+   <url><loc>https://abelgray.co.uk/ecl-mews</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+   <url><loc>https://abelgray.co.uk/about</loc><lastmod>2026-08-26</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+   <url><loc>https://abelgray.co.uk/blog</loc><lastmod>2026-08-26</lastmod><changefreq>weekly</changefreq><priority>0.6</priority></url>

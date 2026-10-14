@@ -26,20 +26,6 @@ window.ABEL_GRAY_PROJECTS = {
         pageSubtitle: "Tews End Lane, Paulerspury, Northamptonshire",
         schemaType: "House"
     },
-    "lindoe-meadows": {
-        name: "Lindoe Meadows",
-        location: "Great Addington, Northamptonshire",
-        status: "Coming Soon",
-        description: "A proposed collection of six detached homes in Great Addington, Northamptonshire.",
-        homes: "6 detached dwellings",
-        bedrooms: "3, 4 & 5 bedroom homes",
-        url: "/lindoe-meadows",
-        seoTitle: "Lindoe Meadows, Northamptonshire | Abel Gray",
-        seoDescription: "Lindoe Meadows is a proposed collection of six detached homes in Great Addington, Northamptonshire.",
-        pageHeading: "Lindoe Meadows, Great Addington",
-        pageSubtitle: "A collection of six individually designed detached homes in the Northamptonshire countryside.",
-        schemaType: "Accommodation"
-    },
     "ecl-mews": {
         name: "ECL Mews",
         location: "Bedfordshire",
